@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.45,
             color: Colors.amber,
           ),
           const Column(
@@ -25,6 +25,7 @@ class LoginPage extends StatelessWidget {
               )
             ],
           ),
+          const _LoginForm()
         ],
       ),
       bottomNavigationBar: Container(
@@ -48,6 +49,63 @@ class LoginPage extends StatelessWidget {
             ],
           )),
     );
+  }
+}
+
+class _LoginForm extends StatelessWidget {
+  const _LoginForm();
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+        child: Container(
+      margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.35, left: 50, right: 50),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black54, blurRadius: 15, offset: Offset(0, 0.75))
+          ]),
+      height: MediaQuery.of(context).size.height * 0.50,
+      child: Column(children: [
+        Container(
+            margin: const EdgeInsets.only(top: 40, bottom: 50),
+            child: Text(
+              'Ingresa esta información'.toUpperCase(),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
+            )),
+        Container(
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            child: const TextField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                    hintText: 'Correo electrónico',
+                    prefixIcon: Icon(Icons.email)))),
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 40),
+          child: const TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  hintText: 'Contraseña', prefixIcon: Icon(Icons.lock))),
+        ),
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+          child: ElevatedButton(
+              onPressed: () => {},
+              style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15)),
+              child: const Text(
+                'LOGIN',
+                style: TextStyle(color: Colors.black),
+              )),
+        )
+      ]),
+    ));
   }
 }
 
