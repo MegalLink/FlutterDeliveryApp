@@ -1,4 +1,5 @@
-import 'package:delivery_app/src/pages/Login/login_page.dart';
+import 'package:delivery_app/src/pages/login/login_page.dart';
+import 'package:delivery_app/src/pages/register/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +31,10 @@ class MyApp extends StatelessWidget {
               surface: Colors.grey,
               onSurface: Colors.grey)),
       initialRoute: '/',
-      getPages: [GetPage(name: '/', page: () => const LoginPage())],
+      getPages: [
+        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/register', page: () => const RegisterPage())
+      ],
       navigatorKey: Get.key,
     );
   }
