@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
               )
             ],
           ),
-          const _LoginForm()
+          _LoginForm()
         ],
       ),
       bottomNavigationBar: Container(
@@ -63,27 +63,30 @@ class LoginPage extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
-  const _LoginForm();
+  final LoginController ctrl = Get.put(LoginController());
+  _LoginForm();
 
   @override
   Widget build(BuildContext context) {
     return FormContainer(marginSeparation: 0.35, children: [
       const FormTitle(title: 'Ingresa esta información'),
-      const FormFieldContainer(
+      FormFieldContainer(
           child: TextField(
+              controller: ctrl.emailCtrl,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Correo electrónico',
                   prefixIcon: Icon(Icons.email)))),
-      const FormFieldContainer(
+      FormFieldContainer(
           child: TextField(
+              controller: ctrl.passwordCtrl,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Contraseña', prefixIcon: Icon(Icons.lock)))),
       FormFieldContainer(
           margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
           child: ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => ctrl.login(),
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 15)),
               child: const Text(
